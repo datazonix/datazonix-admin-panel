@@ -30,6 +30,8 @@ export default function CreateBlog() {
     tags: [],
     image: null,
     description: "",
+    meta_description: "",
+    meta_keywords: "",
   });
 
   const [originalData, setOriginalData] = useState({});
@@ -59,6 +61,8 @@ export default function CreateBlog() {
             author: blog.author || "",
             tags: blog.tags || [],
             image: null,
+            meta_description: blog.meta_description || "",
+            meta_keywords: blog.meta_keywords || "",
             description: blog.description || "",
           };
 
@@ -225,6 +229,8 @@ export default function CreateBlog() {
         formDataToSend.append("author", formData.author);
         formDataToSend.append("tags", JSON.stringify(formData.tags));
         formDataToSend.append("description", formData.description);
+        formDataToSend.append("meta_description", formData.meta_description);
+        formDataToSend.append("meta_keywords", formData.meta_keywords);
 
         if (formData.image instanceof File) {
           formDataToSend.append("image", formData.image);
@@ -399,6 +405,31 @@ export default function CreateBlog() {
             value={formData.author}
             onChange={handleChange}
             placeholder="Author name"
+            className="w-full p-2 border border-gray-300 rounded-md bg-purple-50 text-sm focus:outline-none ring-purple-600 focus:ring-2"
+          />
+        </div>
+
+        {/* meta_description  */}
+        <div>
+          <label className="block font-medium mb-1">Meta Description</label>
+          <textarea
+            name="meta_description"
+            value={formData.meta_description}
+            onChange={handleChange}
+            placeholder="Enter meta description"
+            className="w-full p-2 border border-gray-300 rounded-md bg-purple-50 text-sm focus:outline-none ring-purple-600 focus:ring-2"
+          />
+        </div>
+
+        {/* meta_keywords  */}
+        <div>
+          <label className="block font-medium mb-1">Meta Keywords</label>
+          <input
+            type="text"
+            name="meta_keywords"
+            value={formData.meta_keywords}
+            onChange={handleChange}
+            placeholder="Enter meta keywords (comma separated)"
             className="w-full p-2 border border-gray-300 rounded-md bg-purple-50 text-sm focus:outline-none ring-purple-600 focus:ring-2"
           />
         </div>
