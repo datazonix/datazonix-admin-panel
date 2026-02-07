@@ -141,7 +141,7 @@ const BlogList = () => {
                   src={
                       blog.image?.startsWith("http")
                         ? blog.image
-                        : `https://datazonix.online${blog.image}`
+                        : `https://api.datazonix.online${blog.image}`
                     }
                   alt={blog.title}
                   className="w-full h-full object-cover bg-gray-200"
